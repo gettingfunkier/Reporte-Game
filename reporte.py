@@ -1,8 +1,9 @@
 import pygame
+from pathlib import Path
 
 pygame.init()
 
-canvas = pygame.display.set_mode((800, 600))
+canvas = pygame.display.set_mode((540, 360))
 pygame.display.set_caption("Reporte")
 clock = pygame.time.Clock()
 
@@ -13,7 +14,7 @@ dt = 1
 gravity = 1
 player_position = pygame.Vector2(canvas.get_width() / 2, canvas.get_height() / 2)
 player_velocity = pygame.Vector2(0,0)
-background = pygame.image.load("sunset.png")
+background = pygame.image.load(Path(__file__).parent / "assets" / "mountains.png")
 on_ground = False
 
 def physics(player_position, player_velocity, gravity):
@@ -69,7 +70,7 @@ while running:
 
     # RENDER YOUR GAME HERE
     player = pygame.Rect(player_position.x, player_position.y, 10, 10)
-    ground = pygame.Rect(0, 448, 800, 152)
+    ground = pygame.Rect(0, 300, 540, 152)
 
     physics(player_position, player_velocity, gravity)
     check_ground_collision(player, ground)
